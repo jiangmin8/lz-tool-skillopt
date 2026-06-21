@@ -1,0 +1,17 @@
+{
+  "night": 7,
+  "project": "/media/lz/baba/SkillOpt",
+  "started_at": "2026-06-18T15:25:09",
+  "ended_at": "2026-06-18T15:51:40",
+  "n_sessions": 60,
+  "n_tasks": 4,
+  "n_replayed": 4,
+  "baseline_score": 0.0,
+  "candidate_score": 0.0,
+  "accepted": false,
+  "gate_action": "reject",
+  "edits": [],
+  "rejected_edits": [],
+  "tokens_used": 2629,
+  "notes": []
+}

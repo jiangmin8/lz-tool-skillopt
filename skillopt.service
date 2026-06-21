@@ -1,0 +1,33 @@
+[Unit]
+Description=SkillOpt Training Service
+After=network.target nvidia-persistenced.service
+Wants=nvidia-persistenced.service network-online.target
+
+[Service]
+Type=simple
+User=lz
+Group=lz
+WorkingDirectory=/media/lz/baba/SkillOpt
+
+Environment="PATH=/media/lz/baba/skillopt_env/bin:/usr/local/cuda/bin:/usr/local/bin:/usr/bin:/bin"
+Environment="LD_LIBRARY_PATH=/usr/local/cuda/lib64"
+Environment="AZURE_OPENAI_ENDPOINT=https://api.deepseek.com"
+Environment="AZURE_OPENAI_API_KEY=sk-你的密钥"
+Environment="AZURE_OPENAI_AUTH_MODE=openai_compatible"
+
+ExecStart=/media/lz/baba/skillopt_env/bin/python scripts/train.py \
+  --config configs/searchqa/default.yaml \
+  --backend azure_openai \
+  --optimizer_model deepseek-v4-flash \
+  --target_model deepseek-v4-flash \
+  --num_epochs 4 \
+  --batch_size 40
+
+Restart=no
+RestartSec=5
+
+StandardOutput=append:/media/lz/baba/logs/skillopt.log
+StandardError=append:/media/lz/baba/logs/skillopt.log
+
+[Install]
+WantedBy=multi-user.target
