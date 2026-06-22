@@ -53,13 +53,32 @@ docs/reflact_overview.html
 docs/render_ablation_paper_tables.py
 docs/让*
 .gradio/
-.venv
+# 敏感信息
+.env
+.env.*
+
+# 大模型与权重文件
+*.gguf
+*.bin
+*.pt
+*.safetensors
+*.pth
+
+# 虚拟环境
+*_env/
+.venv/
+venv/
+env/
+
+# 临时与缓存文件
+__pycache__/
+*.pyc
+.scratch/
+logs/
+*.log
 
 # Local experiment launchers — contain machine-specific endpoints/identities, never commit
 tests/run_*.sh
 tests/launch_*.py
 *.launch.log
 outputs/
-__pycache__/
-*.pyc
-venv/
